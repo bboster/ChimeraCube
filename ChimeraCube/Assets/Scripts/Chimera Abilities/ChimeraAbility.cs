@@ -11,7 +11,16 @@ public abstract class ChimeraAbility : MonoBehaviour
     [SerializeField]
     ChimeraAbilitySO abilData;
 
+    protected Arm arm { get; private set; }
+
     float currentCooldown = 0;
+
+    private void Start()
+    {
+        arm = GetComponentInParent<Arm>();
+
+        ChildStart();
+    }
 
     // Cooldown Functions
     private void FixedUpdate()
@@ -25,6 +34,8 @@ public abstract class ChimeraAbility : MonoBehaviour
             return;
 
         currentCooldown -= deltaTime;
+
+        ChildTick();
     }
 
     public bool IsUsable()
@@ -43,5 +54,17 @@ public abstract class ChimeraAbility : MonoBehaviour
         currentCooldown = abilData.cooldown;
     }
 
+    // Child Functions
+
     protected abstract void ChildExecute();
+
+    protected virtual void ChildStart()
+    {
+
+    }
+
+    protected virtual void ChildTick()
+    {
+
+    }
 }

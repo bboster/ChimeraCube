@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4148941980763970775}
   - component: {fileID: 6461325968165367636}
   - component: {fileID: 7934147679019934268}
+  - component: {fileID: 1321626830613816218}
   m_Layer: 0
   m_Name: TestArm
   m_TagString: Untagged
@@ -69,6 +70,27 @@ MonoBehaviour:
   armCollider: {fileID: 1643182085295684199}
   handRenderer: {fileID: 2692339649693597708}
   armRenderer: {fileID: 8083348624917565625}
+--- !u!95 &1321626830613816218
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155590954123388507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 264096393ac2b9c44954457eeec965fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2321175365472002675
 GameObject:
   m_ObjectHideFlags: 0
