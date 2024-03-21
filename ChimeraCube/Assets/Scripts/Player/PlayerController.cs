@@ -1,3 +1,5 @@
+// Script written by: Brooke Boster
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,20 +7,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    // The speed of the player and the move input!
     [SerializeField] private float speed;
     private Vector2 move;
 
+    // Gets the movement input from the InputActions action map.
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    // Currently just moves the player.
     void Update()
     {
         MovePlayer();

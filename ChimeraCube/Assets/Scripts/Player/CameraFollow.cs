@@ -1,3 +1,5 @@
+// Script written by: Brooke Boster
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,15 +11,10 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        // As long as we have a target, add the offset to that position and then follow the player!
         if(target != null)
         {
             Vector3 targetPosition = target.position + offset;
