@@ -328,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 631557648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -637,6 +637,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7475522114528768033, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2935458313738529015}
+    - targetCorrespondingSourceObject: {fileID: 7475522114528768033, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2935458313738529020}
   m_SourcePrefab: {fileID: 100100000, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
 --- !u!4 &2935458313738529013 stripped
 Transform:
@@ -661,6 +664,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  PlayerInputInstance: {fileID: 2935458313738529016}
+  Dash:
+    m_Name: Dash
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c006b6f9-21b0-47dd-8dad-a105d4206b8b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rb: {fileID: 0}
 --- !u!114 &2935458313738529016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,8 +716,39 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 62f81006-295b-4fc9-bbbc-1dab7f935eee
     m_ActionName: PlayerMovement/WASD[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 308e86dc-3af2-42fb-bd16-091d7a9a252c
+    m_ActionName: PlayerMovement/Dash[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &2935458313738529020
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935458313738529014}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
