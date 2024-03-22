@@ -38,9 +38,16 @@ public class Arm : MonoBehaviour
 
     float currentStamina = 0;
 
+    float currentExhaustion = 0;
+
+    float pendingDamage = 0;
+
     private void Start()
     {
         currentStamina = 0;
+        currentExhaustion = 0;
+        pendingDamage = 0;
+
         currentHealth = armData.maxHealth;
     }
 
@@ -49,6 +56,9 @@ public class Arm : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
             abil.Execute();
+
+        if (Input.GetKeyUp(KeyCode.E))
+            Damage(5.0f);
     }
 
     private void FixedUpdate()
@@ -58,10 +68,10 @@ public class Arm : MonoBehaviour
 
     private void Tick(float deltaTime)
     {
-        if (!IsFullyStretched())
+        if (!IsFullyStretched() && !IsExhausted())
             currentStamina += deltaTime * armData.staminaRegen;
 
-        Stretch();
+        Stretch(deltaTime);
     }
 
     public bool IsFullyStretched()
@@ -69,10 +79,20 @@ public class Arm : MonoBehaviour
         return currentStamina >= armData.maxStamina;
     }
 
-    // Stretching
-    private void Stretch()
+    public bool IsExhausted()
     {
-        float newScale = (currentStamina / armData.maxStamina) * armData.maxStretchLength;
+        //return currentExhaustion > 0;
+        return pendingDamage > 0;
+    }
+
+    // Stretching
+    private void Stretch(float deltaTime)
+    {
+        
+        float staminaDecay = pendingDamage * armData.staminaDecay * deltaTime;
+        pendingDamage -= staminaDecay;
+
+        float newScale = ((currentStamina - staminaDecay) / armData.maxStamina) * armData.maxStretchLength;
 
         Vector3 tempScale = armTransform.localScale;
         tempScale.z = newScale;
@@ -87,7 +107,16 @@ public class Arm : MonoBehaviour
     public void Damage(float dmg)
     {
         currentHealth -= dmg;
+        currentStamina -= pendingDamage;
+        Debug.Log("Cleared Pending: " + pendingDamage);
+
+        pendingDamage = dmg;
+        Debug.Log("New Pending Damage: " + pendingDamage);
+
         Debug.Log(gameObject + " ouch!");
+
+        if (currentStamina < 0)
+            currentStamina = 0;
 
         if (currentHealth <= 0)
         {

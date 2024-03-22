@@ -11,5 +11,11 @@ public class ArmSO : ScriptableObject
 
     public float staminaRegen = 5;
 
+    public float staminaDecay = 0.1f;
+
+    public float exhaustionMax = 10;
+
+    public float exhaustionDecay = 1;
+
     public float maxStretchLength = 5;
 }
