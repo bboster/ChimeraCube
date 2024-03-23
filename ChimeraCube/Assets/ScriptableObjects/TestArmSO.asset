@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestArmSO
   m_EditorClassIdentifier: 
   maxStamina: 20
-  maxStretchLength: 3
+  maxStretchLength: 2.2
   growthRate: 1
   growthDecayRate: 0.5
