@@ -5,17 +5,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ArmSO : ScriptableObject
 {
-    public float maxHealth = 100;
-
+    [Header("Stamina")]
     public float maxStamina = 100;
 
-    public float staminaRegen = 5;
-
-    public float staminaDecay = 0.1f;
-
-    public float exhaustionMax = 10;
-
-    public float exhaustionDecay = 1;
-
+    [Header("Stretching")]
     public float maxStretchLength = 5;
+
+    public float growthRate = 5;
+
+    public float growthDecayRate = 0.1f;
 }

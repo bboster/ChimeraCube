@@ -15,4 +15,7 @@ MonoBehaviour:
   maxHealth: 100
   maxStamina: 100
   staminaRegen: 5
+  staminaDecay: 0.5
+  exhaustionMax: 10
+  exhaustionDecay: 1
   maxStretchLength: 3
