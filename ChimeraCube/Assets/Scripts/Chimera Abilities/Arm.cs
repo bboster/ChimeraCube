@@ -34,14 +34,22 @@ public class Arm : MonoBehaviour
     [SerializeField]
     Renderer armRenderer;
 
-    float currentHealth = 100;
+    // Private Assignments
+    Health health;
 
+    // Stamina Management
     float currentStamina = 0;
+
+    float currentPendingDamage = 0;
+
+    float staminaDecay = 0;
 
     private void Start()
     {
+        health = GetComponent<Health>();
+
         currentStamina = 0;
-        currentHealth = armData.maxHealth;
+        currentPendingDamage = 0;
     }
 
     // Stamina and Ability Tracking
@@ -49,6 +57,9 @@ public class Arm : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
             abil.Execute();
+
+        if (Input.GetKeyUp(KeyCode.E))
+            Damage(10.0f);
     }
 
     private void FixedUpdate()
@@ -58,10 +69,26 @@ public class Arm : MonoBehaviour
 
     private void Tick(float deltaTime)
     {
-        if (!IsFullyStretched())
-            currentStamina += deltaTime * armData.staminaRegen;
+        StaminaTick(deltaTime);
 
         Stretch();
+    }
+
+    private void StaminaTick(float deltaTime)
+    {
+        if (IsExhausted())
+        {
+            float timeScaledDecay = this.staminaDecay * deltaTime;
+            currentPendingDamage -= timeScaledDecay;
+
+            currentPendingDamage -= timeScaledDecay;
+            currentStamina -= timeScaledDecay;
+
+            if (currentPendingDamage <= 0)
+                this.staminaDecay = 0;
+        }
+        else if (!IsFullyStretched())
+            currentStamina += deltaTime * armData.growthRate;
     }
 
     public bool IsFullyStretched()
@@ -69,10 +96,15 @@ public class Arm : MonoBehaviour
         return currentStamina >= armData.maxStamina;
     }
 
+    public bool IsExhausted()
+    {
+        return currentPendingDamage > 0;
+    }
+
     // Stretching
     private void Stretch()
     {
-        float newScale = (currentStamina / armData.maxStamina) * armData.maxStretchLength;
+        float newScale = Mathf.Clamp01(currentStamina / armData.maxStamina) * armData.maxStretchLength;
 
         Vector3 tempScale = armTransform.localScale;
         tempScale.z = newScale;
@@ -86,13 +118,24 @@ public class Arm : MonoBehaviour
     // Health and Damaging
     public void Damage(float dmg)
     {
-        currentHealth -= dmg;
-        Debug.Log(gameObject + " ouch!");
+        health.Damage(dmg);
+        currentStamina -= currentPendingDamage;
+        Debug.Log("Cleared Pending: " + currentPendingDamage);
 
-        if (currentHealth <= 0)
+        currentPendingDamage = dmg;
+        Debug.Log("New Pending Damage: " + currentPendingDamage);
+
+        staminaDecay = currentPendingDamage * armData.growthDecayRate;
+
+        if (currentStamina < 0)
+            currentStamina = 0;
+
+        if (health.IsDead())
         {
             Debug.Log(gameObject + " died!");
             return;
         }
+
+        Debug.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     }
 }
