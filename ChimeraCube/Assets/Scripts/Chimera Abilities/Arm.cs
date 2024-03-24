@@ -21,18 +21,14 @@ public class Arm : MonoBehaviour
     [SerializeField]
     Transform armTransform;
 
-    [SerializeField]
-    Collider handCollider;
-
-    [SerializeField]
-    Collider armCollider;
-
     [Header("Visual Assignments")]
     [SerializeField]
     Renderer handRenderer;
 
     [SerializeField]
     Renderer armRenderer;
+
+    public Chimera Chimera { get; private set; }
 
     // Private Assignments
     Health health;
@@ -47,6 +43,7 @@ public class Arm : MonoBehaviour
     private void Start()
     {
         health = GetComponent<Health>();
+        Chimera = GetComponentInParent<Chimera>();
 
         currentStamina = 0;
         currentPendingDamage = 0;
@@ -55,10 +52,10 @@ public class Arm : MonoBehaviour
     // Stamina and Ability Tracking
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (abil != null && Input.GetKeyUp(armData.abilityTestKeycode))
             abil.Execute();
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(armData.damageTestKeycode))
             Damage(10.0f);
     }
 
@@ -119,23 +116,28 @@ public class Arm : MonoBehaviour
     public void Damage(float dmg)
     {
         health.Damage(dmg);
-        currentStamina -= currentPendingDamage;
-        Debug.Log("Cleared Pending: " + currentPendingDamage);
 
-        currentPendingDamage = dmg;
-        Debug.Log("New Pending Damage: " + currentPendingDamage);
+        // Growth Decay
+        if (armData.doDecayOnHit)
+        {
+            currentStamina -= currentPendingDamage;
+            //Debug.Log("Cleared Pending: " + currentPendingDamage);
 
-        staminaDecay = currentPendingDamage * armData.growthDecayRate;
+            currentPendingDamage = dmg;
+            //Debug.Log("New Pending Damage: " + currentPendingDamage);
 
-        if (currentStamina < 0)
-            currentStamina = 0;
+            staminaDecay = currentPendingDamage * armData.growthDecayRate;
 
+            if (currentStamina < 0)
+                currentStamina = 0;
+        }
+        
         if (health.IsDead())
         {
             Debug.Log(gameObject + " died!");
             return;
         }
 
-        Debug.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        //Debug.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     }
 }

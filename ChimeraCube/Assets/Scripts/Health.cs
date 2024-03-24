@@ -41,6 +41,17 @@ public class Health : MonoBehaviour
         fillImage.fillAmount = currentHealth / maxHealth;
     }
 
+    public void SetFillImage(Image image)
+    {
+        fillImage = image;
+        UpdateUI();
+    }
+
+    public Image GetFillImage()
+    {
+        return fillImage;
+    }
+
     // Getters & Setters
     public float GetHealth()
     {

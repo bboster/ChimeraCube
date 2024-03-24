@@ -14,4 +14,14 @@ public class ArmSO : ScriptableObject
     public float growthRate = 5;
 
     public float growthDecayRate = 0.1f;
+
+    public bool doDecayOnHit = true;
+
+    [Header("Environment")]
+    public bool doDestroyEnvironment = true;
+
+    [Header("Debug")]
+    public KeyCode abilityTestKeycode = KeyCode.Space;
+
+    public KeyCode damageTestKeycode = KeyCode.E;
 }
