@@ -67,10 +67,9 @@ MonoBehaviour:
   abil: {fileID: 6461325968165367636}
   handTransform: {fileID: 6605064253218947447}
   armTransform: {fileID: 7532047486849013670}
-  handCollider: {fileID: 3902602329346693020}
-  armCollider: {fileID: 1643182085295684199}
   handRenderer: {fileID: 2692339649693597708}
   armRenderer: {fileID: 8083348624917565625}
+  pauseGrowth: 0
 --- !u!114 &1325770189688358977
 MonoBehaviour:
   m_ObjectHideFlags: 0

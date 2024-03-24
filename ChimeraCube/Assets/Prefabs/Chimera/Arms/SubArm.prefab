@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8525303742239758184}
   - {fileID: 447854792568428771}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7215826575778900832
 MonoBehaviour:
@@ -53,6 +53,7 @@ MonoBehaviour:
   armTransform: {fileID: 8525303742239758184}
   handRenderer: {fileID: 4554272612682851301}
   armRenderer: {fileID: 2065464979453981283}
+  pauseGrowth: 1
 --- !u!114 &763896173426384051
 MonoBehaviour:
   m_ObjectHideFlags: 0
