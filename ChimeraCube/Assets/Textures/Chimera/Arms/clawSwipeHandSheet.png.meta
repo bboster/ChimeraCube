@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 02e6c37093eaf4649a8ac95806a69c70
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_0
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 2535
+        width: 439
+        height: 498
+      alignment: 9
+      pivot: {x: 0.4899306, y: 0.0029370412}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de79f1195f033c146899c5dac520c35b
+      internalID: -1830585826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_1
+      rect:
+        serializedVersion: 2
+        x: 2226
+        y: 2604
+        width: 580
+        height: 404
+      alignment: 9
+      pivot: {x: 0.84295404, y: 0.12799375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8944cab285db79e49adcbd2fafb02ab0
+      internalID: 1201890383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_2
+      rect:
+        serializedVersion: 2
+        x: 4415
+        y: 2600
+        width: 585
+        height: 412
+      alignment: 9
+      pivot: {x: 0.84757864, y: 0.12448802}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bf427220490534d89b0e9033e9bfdf
+      internalID: -739847860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_3
+      rect:
+        serializedVersion: 2
+        x: 6638
+        y: 2608
+        width: 581
+        height: 404
+      alignment: 9
+      pivot: {x: 0.8538207, y: 0.12454737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab02d860cd06dab49879559127a5c90e
+      internalID: -1748541663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1559
+        width: 585
+        height: 412
+      alignment: 9
+      pivot: {x: 0.8475792, y: 0.1030306}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19df86876c232c7498426b708e45132f
+      internalID: 1868604854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2234
+        y: 1563
+        width: 581
+        height: 404
+      alignment: 9
+      pivot: {x: 0.8575803, y: 0.117052436}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5122b7e0381995348a2f207bdfe071e1
+      internalID: -1377365849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_6
+      rect:
+        serializedVersion: 2
+        x: 4584
+        y: 1421
+        width: 2003
+        height: 636
+      alignment: 9
+      pivot: {x: 0.76702744, y: 0.3331959}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80fbfd88a2fedd949ab76e378f708513
+      internalID: 367142447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_8
+      rect:
+        serializedVersion: 2
+        x: 8012
+        y: 1322
+        width: 796
+        height: 602
+      alignment: 9
+      pivot: {x: 0.42652595, y: 0.5277576}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ef6be60dd3f1941ab0540afe34f66e
+      internalID: 722056473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 376
+        width: 482
+        height: 331
+      alignment: 9
+      pivot: {x: 0.013949699, y: 0.6468976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96d1db71688afe142a8752dee5e666dc
+      internalID: -782651953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clawSwipeHandSheet_13
+      rect:
+        serializedVersion: 2
+        x: 3224
+        y: 334
+        width: 558
+        height: 352
+      alignment: 9
+      pivot: {x: 0.05638467, y: 0.6758076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f4ad53ca1f9324da4b2a0143ae6e67
+      internalID: 226599257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b1ffec82a2724684d8db34f817e75dc7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      clawSwipeHandSheet_0: -1830585826
+      clawSwipeHandSheet_1: 1201890383
+      clawSwipeHandSheet_10: -2012464514
+      clawSwipeHandSheet_11: -1601238080
+      clawSwipeHandSheet_12: -782651953
+      clawSwipeHandSheet_13: 226599257
+      clawSwipeHandSheet_2: -739847860
+      clawSwipeHandSheet_3: -1748541663
+      clawSwipeHandSheet_4: 1868604854
+      clawSwipeHandSheet_5: -1377365849
+      clawSwipeHandSheet_6: 367142447
+      clawSwipeHandSheet_7: 786135260
+      clawSwipeHandSheet_8: 722056473
+      clawSwipeHandSheet_9: -490701376
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

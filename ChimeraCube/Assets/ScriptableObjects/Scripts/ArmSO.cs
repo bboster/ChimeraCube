@@ -21,7 +21,9 @@ public class ArmSO : ScriptableObject
     public bool doDestroyEnvironment = true;
 
     [Header("Debug")]
-    public KeyCode abilityTestKeycode = KeyCode.Space;
+    public KeyCode attackTestCode = KeyCode.Space;
+
+    public KeyCode specialTestCode = KeyCode.Semicolon;
 
     public KeyCode damageTestKeycode = KeyCode.E;
 }

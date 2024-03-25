@@ -14,7 +14,10 @@ public class Arm : MonoBehaviour
 
     [Header("Logic Assignments")]
     [SerializeField]
-    ChimeraAbility abil;
+    ChimeraAbility attackAbil;
+
+    [SerializeField]
+    ChimeraAbility specialAbil;
 
     [SerializeField]
     Transform handTransform;
@@ -61,11 +64,14 @@ public class Arm : MonoBehaviour
     // Stamina and Ability Tracking
     void Update()
     {
-        if (abil != null && Input.GetKeyUp(armData.abilityTestKeycode))
-            abil.Execute();
+        if(attackAbil != null && Input.GetKeyUp(armData.attackTestCode))
+            attackAbil.Execute();
+
+        if (specialAbil != null && Input.GetKeyUp(armData.specialTestCode))
+            specialAbil.Execute();
 
         if (Input.GetKeyUp(armData.damageTestKeycode))
-            Damage(10.0f);
+            Damage(5.0f);
     }
 
     private void FixedUpdate()
