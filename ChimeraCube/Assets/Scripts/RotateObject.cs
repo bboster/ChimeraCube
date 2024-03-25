@@ -21,4 +21,14 @@ public class RotateObject : MonoBehaviour
         Vector3 newRotation = transform.rotation.eulerAngles + rotation;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(newRotation), rotationRate * deltaTime);
     }
+
+    public void SetRotationRate(float newRotationRate)
+    {
+        rotationRate = newRotationRate;
+    }
+
+    public float GetRotationRate()
+    {
+        return rotationRate;
+    }
 }

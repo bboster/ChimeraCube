@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d43c2177c8f4f34584e3ed0a563c11c, type: 3}
+  m_Name: ClawArmSO
+  m_EditorClassIdentifier: 
+  maxStamina: 20
+  maxStretchLength: 3
+  growthRate: 2
+  growthDecayRate: 0.5
+  doDecayOnHit: 1
+  doDestroyEnvironment: 0
+  abilityTestKeycode: 122
+  damageTestKeycode: 102

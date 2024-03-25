@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,11 @@ public class Health : MonoBehaviour
 
     bool isFillImageNull = true;
 
+    // Events
+    public event Action DamageTakenEvent;
+
+    public event Action DeathEvent;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -31,20 +37,45 @@ public class Health : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth - dmg, 0, maxHealth);
 
-        if (!isFillImageNull)
-            UpdateUI();
+        DamageTakenEvent?.Invoke();
+        Debug.Log(gameObject + " damaged!");
+
+        UpdateUI();
+
+        if (IsDead())
+            DeathEvent?.Invoke();
     }
 
     // UI
     private void UpdateUI()
     {
+        if (isFillImageNull)
+            return;
+
         fillImage.fillAmount = currentHealth / maxHealth;
+    }
+
+    public void SetFillImage(Image image)
+    {
+        fillImage = image;
+        UpdateUI();
+    }
+
+    public Image GetFillImage()
+    {
+        return fillImage;
     }
 
     // Getters & Setters
     public float GetHealth()
     {
         return currentHealth;
+    }
+
+    public void SetHealth(float newHealth)
+    {
+        currentHealth = newHealth;
+        UpdateUI();
     }
 
     public float GetMaxHealth()

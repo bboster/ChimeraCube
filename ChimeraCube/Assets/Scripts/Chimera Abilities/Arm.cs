@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,18 +22,22 @@ public class Arm : MonoBehaviour
     [SerializeField]
     Transform armTransform;
 
-    [SerializeField]
-    Collider handCollider;
-
-    [SerializeField]
-    Collider armCollider;
-
     [Header("Visual Assignments")]
     [SerializeField]
     Renderer handRenderer;
 
     [SerializeField]
     Renderer armRenderer;
+
+    [Header("Growth")]
+    [SerializeField]
+    bool pauseGrowth = false;
+
+    [SerializeField]
+    float growthSpeedModifier = 1;
+
+    // Public Assignments
+    public Chimera Chimera { get; private set; }
 
     // Private Assignments
     Health health;
@@ -44,21 +49,22 @@ public class Arm : MonoBehaviour
 
     float staminaDecay = 0;
 
+    // Events
+    public event Action FinishedGrowthEvent;
+
     private void Start()
     {
         health = GetComponent<Health>();
-
-        currentStamina = 0;
-        currentPendingDamage = 0;
+        Chimera = GetComponentInParent<Chimera>();
     }
 
     // Stamina and Ability Tracking
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (abil != null && Input.GetKeyUp(armData.abilityTestKeycode))
             abil.Execute();
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(armData.damageTestKeycode))
             Damage(10.0f);
     }
 
@@ -88,17 +94,21 @@ public class Arm : MonoBehaviour
                 this.staminaDecay = 0;
         }
         else if (!IsFullyStretched())
-            currentStamina += deltaTime * armData.growthRate;
+            currentStamina += deltaTime * armData.growthRate * growthSpeedModifier;
     }
 
     public bool IsFullyStretched()
     {
-        return currentStamina >= armData.maxStamina;
+        bool isFullyStretched = currentStamina >= armData.maxStamina;
+        if (isFullyStretched)
+            FinishedGrowthEvent?.Invoke();
+
+        return isFullyStretched;
     }
 
     public bool IsExhausted()
     {
-        return currentPendingDamage > 0;
+        return currentPendingDamage > 0 || pauseGrowth;
     }
 
     // Stretching
@@ -115,27 +125,79 @@ public class Arm : MonoBehaviour
         handTransform.localPosition = tempScale;
     }
 
+    public void SetPauseGrowth(bool doPause)
+    {
+        pauseGrowth = doPause;
+    }
+
+    public void SetGrowthSpeedModifier(float newGrowthSpeedMod)
+    {
+        growthSpeedModifier = newGrowthSpeedMod;
+    }
+
+    public float GetGrowthSpeedModifier()
+    {
+        return growthSpeedModifier;
+    }
+
+    public void SetStamina(float newStamina)
+    {
+        currentStamina = newStamina;
+        Stretch();
+    }
+
+    public float GetStamina()
+    {
+        return currentStamina;
+    }
+
     // Health and Damaging
     public void Damage(float dmg)
     {
         health.Damage(dmg);
-        currentStamina -= currentPendingDamage;
-        Debug.Log("Cleared Pending: " + currentPendingDamage);
 
-        currentPendingDamage = dmg;
-        Debug.Log("New Pending Damage: " + currentPendingDamage);
+        // Growth Decay
+        if (armData.doDecayOnHit)
+        {
+            currentStamina -= currentPendingDamage;
+            //Debug.Log("Cleared Pending: " + currentPendingDamage);
 
-        staminaDecay = currentPendingDamage * armData.growthDecayRate;
+            currentPendingDamage = dmg;
+            //Debug.Log("New Pending Damage: " + currentPendingDamage);
 
-        if (currentStamina < 0)
-            currentStamina = 0;
+            staminaDecay = currentPendingDamage * armData.growthDecayRate;
 
+            if (currentStamina < 0)
+                currentStamina = 0;
+        }
+        
         if (health.IsDead())
         {
             Debug.Log(gameObject + " died!");
             return;
         }
 
-        Debug.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        //Debug.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    }
+
+    // Arm Segments
+    public bool GetArmTransformActive()
+    {
+        return armTransform.gameObject.activeSelf;
+    }
+
+    public void SetArmTransformActive(bool active)
+    {
+        armTransform.gameObject.SetActive(active);
+    }
+
+    public bool GetHandTransformActive()
+    {
+        return handTransform.gameObject.activeSelf;
+    }
+
+    public void SetHandTransformActive(bool active)
+    {
+        handTransform.gameObject.SetActive(active);
     }
 }
