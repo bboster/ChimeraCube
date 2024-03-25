@@ -90,6 +90,9 @@ public class Arm : MonoBehaviour
             currentPendingDamage -= timeScaledDecay;
             currentStamina -= timeScaledDecay;
 
+            if (currentStamina <= 0)
+                currentPendingDamage = 0;
+
             if (currentPendingDamage <= 0)
                 this.staminaDecay = 0;
         }
@@ -151,6 +154,16 @@ public class Arm : MonoBehaviour
         return currentStamina;
     }
 
+    public void DecayStamina(float staminaReduction)
+    {
+        currentPendingDamage += staminaReduction;
+
+        staminaDecay = currentPendingDamage * armData.growthDecayRate;
+
+        if (currentStamina < 0)
+            currentStamina = 0;
+    }
+
     // Health and Damaging
     public void Damage(float dmg)
     {
@@ -159,16 +172,7 @@ public class Arm : MonoBehaviour
         // Growth Decay
         if (armData.doDecayOnHit)
         {
-            currentStamina -= currentPendingDamage;
-            //Debug.Log("Cleared Pending: " + currentPendingDamage);
-
-            currentPendingDamage = dmg;
-            //Debug.Log("New Pending Damage: " + currentPendingDamage);
-
-            staminaDecay = currentPendingDamage * armData.growthDecayRate;
-
-            if (currentStamina < 0)
-                currentStamina = 0;
+            DecayStamina(dmg);
         }
         
         if (health.IsDead())
