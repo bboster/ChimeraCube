@@ -9,5 +9,7 @@ public class ChimeraAbilitySO : ScriptableObject
 
     public float scalingRate = 1;
 
+    public float windUpTime = 1;
+
     public Sprite icon;
 }
