@@ -17,6 +17,8 @@ public class WorldDestroy : MonoBehaviour
         // When hand contacts / its tag call this function
         if(other.gameObject.CompareTag("AreaDestroyer"))
         {
+            Arm arm = other.GetComponentInParent<Arm>();
+            arm.DecayStamina(arm.GetStamina());
             Debug.Log("I AM WORKING");
             StartCoroutine(goodbyeFloor());
             Debug.Log("This is the end");
