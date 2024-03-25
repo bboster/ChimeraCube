@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8641739673676788995}
   - component: {fileID: 9032851490458699519}
   - component: {fileID: 5366984375415162646}
-  - component: {fileID: 969318734677141622}
+  - component: {fileID: 6261218309047052436}
+  - component: {fileID: 187364208695677878}
   m_Layer: 0
   m_Name: DestructableWall_4
   m_TagString: Untagged
@@ -106,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &969318734677141622
+--- !u!114 &6261218309047052436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +122,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 6246959216463983345}
   otherEnd: {fileID: 4474700255486910208}
+--- !u!54 &187364208695677878
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686339865689786002}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &808355467810547680
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +268,8 @@ GameObject:
   - component: {fileID: 1229159493336751099}
   - component: {fileID: 8189977040098406026}
   - component: {fileID: 8693298342131069238}
-  - component: {fileID: 6233081072083301168}
+  - component: {fileID: 1642995735493149240}
+  - component: {fileID: 2212203593829374649}
   m_Layer: 0
   m_Name: DestructableWall_1
   m_TagString: Untagged
@@ -349,7 +378,22 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 384444652243687473}
   otherEnd: {fileID: 808355467810547680}
---- !u!54 &6233081072083301168
+--- !u!114 &1642995735493149240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3034166268918607338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e463b52dea8b642bf11f3d420e329a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionDelay: 5
+  floorQue: {fileID: 384444652243687473}
+  otherEnd: {fileID: 808355467810547680}
+--- !u!54 &2212203593829374649
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,6 +539,7 @@ GameObject:
   - component: {fileID: 5808351947257161528}
   - component: {fileID: 8007883591110878878}
   - component: {fileID: 3107523065011095760}
+  - component: {fileID: 6595235462073265727}
   m_Layer: 0
   m_Name: DestructableWall_2
   m_TagString: Untagged
@@ -603,6 +648,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 1126718409964796329}
   otherEnd: {fileID: 3662032695279096182}
+--- !u!54 &6595235462073265727
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3143329131894906004}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3290310350988137402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,7 +1325,8 @@ GameObject:
   - component: {fileID: 1426371161009840803}
   - component: {fileID: 5120147065108762956}
   - component: {fileID: 5516136886455980251}
-  - component: {fileID: 3178579848143431801}
+  - component: {fileID: 3921404442761553423}
+  - component: {fileID: 8576545332852861973}
   m_Layer: 0
   m_Name: DestructableWall_8
   m_TagString: Untagged
@@ -1347,7 +1420,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3178579848143431801
+--- !u!114 &3921404442761553423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1362,6 +1435,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 7234241164920934773}
   otherEnd: {fileID: 3290310350988137402}
+--- !u!54 &8576545332852861973
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013663679480204068}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7219417166212668875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,7 +1513,8 @@ GameObject:
   - component: {fileID: 2283821555324338178}
   - component: {fileID: 1709223242229049043}
   - component: {fileID: 4508895800426444428}
-  - component: {fileID: 3590608867184584516}
+  - component: {fileID: 3045366094093064368}
+  - component: {fileID: 3843975644070630841}
   m_Layer: 0
   m_Name: DestructableWall_3
   m_TagString: Untagged
@@ -1507,7 +1608,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3590608867184584516
+--- !u!114 &3045366094093064368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1522,6 +1623,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 5851085846133508796}
   otherEnd: {fileID: 9110634474786391469}
+--- !u!54 &3843975644070630841
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254658378090084110}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7457807263082233443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1662,8 @@ GameObject:
   - component: {fileID: 2020216626937954743}
   - component: {fileID: 6217112938181091979}
   - component: {fileID: 953550656082161063}
-  - component: {fileID: 8391493176194750168}
+  - component: {fileID: 4249895958973335896}
+  - component: {fileID: 6420262700488266334}
   m_Layer: 0
   m_Name: DestructableWall_5
   m_TagString: Untagged
@@ -1628,7 +1757,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8391493176194750168
+--- !u!114 &4249895958973335896
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1643,6 +1772,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 3147758495559024600}
   otherEnd: {fileID: 3920661297989220708}
+--- !u!54 &6420262700488266334
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7457807263082233443}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7749208415441149354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,7 +1811,8 @@ GameObject:
   - component: {fileID: 8736197105943454921}
   - component: {fileID: 3704683981690123639}
   - component: {fileID: 5494118472654637843}
-  - component: {fileID: 4001432067361629309}
+  - component: {fileID: 7682708091138245200}
+  - component: {fileID: 1680379139734800184}
   m_Layer: 0
   m_Name: DestructableWall_7
   m_TagString: Untagged
@@ -1749,7 +1906,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4001432067361629309
+--- !u!114 &7682708091138245200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1764,6 +1921,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 6011808414613500510}
   otherEnd: {fileID: 3098419952522848244}
+--- !u!54 &1680379139734800184
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749208415441149354}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8024727011665828324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,7 +1960,8 @@ GameObject:
   - component: {fileID: 4109476232316066512}
   - component: {fileID: 6237691188722707426}
   - component: {fileID: 7380312957226701224}
-  - component: {fileID: 9107031510660622090}
+  - component: {fileID: 1445876058246082766}
+  - component: {fileID: 6566860839173234171}
   m_Layer: 0
   m_Name: DestructableWall_6
   m_TagString: Untagged
@@ -1870,7 +2055,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9107031510660622090
+--- !u!114 &1445876058246082766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1885,6 +2070,33 @@ MonoBehaviour:
   destructionDelay: 5
   floorQue: {fileID: 6344165301806591241}
   otherEnd: {fileID: 8766497162570240548}
+--- !u!54 &6566860839173234171
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024727011665828324}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8648656498040285783
 GameObject:
   m_ObjectHideFlags: 0
