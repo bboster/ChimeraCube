@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     // the ray to get the mouse position
     private Ray shootRay;
 
+    [SerializeField] private float enemyDamage = 10f;
+
+    public PlayerHealth PH;
+
     // Gets the movement input from the InputActions action map.
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -74,7 +78,8 @@ public class PlayerController : MonoBehaviour
     {
         GameObject bullets = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         Rigidbody rb = bullets.GetComponent<Rigidbody>();
-        rb.AddForce(helper.transform.position * shootSpeed);
+        Vector3 shootDirection = (helper.transform.position - shootPoint.position).normalized;
+        rb.AddForce(shootDirection * shootSpeed);
         //rb.transform.position = Vector3.MoveTowards(shootPoint.position, helper.transform.position, shootSpeed * Time.deltaTime);
         //Vector3 mousePosition = Input.mousePosition;
         //rb.transform.position = helper.transform.position;
@@ -114,6 +119,22 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(move.x, 0f, move.y);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
+    }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Chimera"))
+    //    {
+    //        PH.Damage(enemyDamage);
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Chimera")
+        {
+            PH.Damage(enemyDamage);
+        }
     }
 
     private void OnDestroy()
