@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armData: {fileID: 11400000, guid: 3221084f2c056ef45aae0ce4a6523ce5, type: 2}
-  abil: {fileID: 0}
+  attackAbil: {fileID: 0}
+  specialAbil: {fileID: 0}
   handTransform: {fileID: 447854792568428771}
   armTransform: {fileID: 8525303742239758184}
   handRenderer: {fileID: 2554932204224962184}
