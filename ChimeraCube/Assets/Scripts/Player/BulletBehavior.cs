@@ -11,5 +11,9 @@ public class BulletBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(collision.gameObject.tag == "Chimera")
+        {
+            Destroy(gameObject);
+        }
     }
 }

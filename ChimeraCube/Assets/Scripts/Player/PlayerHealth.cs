@@ -7,11 +7,13 @@ public class PlayerHealth : MonoBehaviour
 {
     //public static PlayerHealth instance;
 
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float maxHealth = 300f;
     [SerializeField] private float playerHealth;
     [SerializeField] private Collider hitBox;
     [SerializeField] private bool isHit;
     [SerializeField] private float iFrameDuration;
+
+    [SerializeField] private GameObject youDiedCanvas;
 
     
 
@@ -28,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
         if(playerHealth < 0f)
         {
             playerHealth = 0f;
+            youDiedCanvas.SetActive(true);
         }
         else if(playerHealth > maxHealth)
         {
@@ -35,15 +38,13 @@ public class PlayerHealth : MonoBehaviour
         }
 
         //HealthFill.fillAmount = Mathf.Lerp(HealthFill.fillAmount, (playerHealth / maxHealth), 0.5f);
-
-
     }
     public void Damage(float damage)
     {
-        //if (isHit)
-        //{
-        //    return;
-        //}
+        if (isHit)
+        {
+            return;
+        }
         playerHealth -= damage;
         isHit = true;
         StartCoroutine(IFrames());
