@@ -184,6 +184,8 @@ public class Arm : MonoBehaviour
         if (health.IsDead())
         {
             Debug.Log(gameObject + " died!");
+            gameObject.SetActive(false);
+            Chimera.IncrementRotationSpeed();
             return;
         }
 

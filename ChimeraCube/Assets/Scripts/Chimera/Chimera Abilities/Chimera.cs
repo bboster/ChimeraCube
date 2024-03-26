@@ -11,6 +11,9 @@ public class Chimera : MonoBehaviour
     [SerializeField]
     float rotationSpeed = 45;
 
+    [SerializeField]
+    float rotationSpeedIncrement = 1;
+
     private void Start()
     {
         rotationalScript = GetComponent<RotateObject>();
@@ -25,5 +28,15 @@ public class Chimera : MonoBehaviour
     public float GetRotationSpeed()
     {
         return rotationSpeed;
+    }
+
+    public float GetRotationSpeedIncrement()
+    {
+        return rotationSpeedIncrement;
+    }
+
+    public void IncrementRotationSpeed()
+    {
+        SetRotationSpeed(rotationSpeedIncrement);
     }
 }
