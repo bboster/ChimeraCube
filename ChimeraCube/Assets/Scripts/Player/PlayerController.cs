@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
 
+    // The camera, bullet prefab, the position where the bullet spawns, the helper (mouse position), and the shoot speed.
     [SerializeField] private Camera camera;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform shootPoint;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject helper;
     [SerializeField] private float shootSpeed;
 
+    // the ray to get the mouse position
     private Ray shootRay;
 
     // Gets the movement input from the InputActions action map.
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
         Shooting();
     }
 
+    // Instantiate the bullet, get it's rigidbody, and add a force to it in the direction of the helper.
     public void Shooting()
     {
         GameObject bullets = Instantiate(bullet, shootPoint.position, Quaternion.identity);
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // transform the helper to the ray gotten from the mouse position.
         shootRay = camera.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(shootRay, out RaycastHit raycastHit))
         {
