@@ -863,6 +863,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: AreaDestroyer
       objectReference: {fileID: 0}
+    - target: {fileID: 2709110180817824397, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
+      propertyPath: attackStartDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709110180817824397, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
+      propertyPath: specialStartDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558142326795548935, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
+      propertyPath: attackStartDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4558142326795548935, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
+      propertyPath: specialStartDelay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858321754657329812, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
+      propertyPath: attackStartDelay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858321754657329812, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
+      propertyPath: specialStartDelay
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7082953993580106032, guid: 0a256dc7aeca5b945a2f533dd413a3ff, type: 3}
       propertyPath: m_RootOrder
       value: 2

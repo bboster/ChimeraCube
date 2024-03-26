@@ -15,10 +15,14 @@ public abstract class ChimeraAbility : MonoBehaviour
 
     float currentCooldown = 0;
 
+    private void Awake()
+    {
+        SetCooldown();
+        arm = GetComponentInParent<Arm>();
+    }
+
     private void Start()
     {
-        arm = GetComponentInParent<Arm>();
-
         ChildStart();
     }
 
@@ -43,6 +47,11 @@ public abstract class ChimeraAbility : MonoBehaviour
         return currentCooldown <= 0;
     }
 
+    private void SetCooldown()
+    {
+        currentCooldown = abilData.cooldown + Random.Range(-abilData.cooldownVariance, abilData.cooldownVariance);
+    }
+
     // Ability Usage
     public void Execute()
     {
@@ -51,11 +60,23 @@ public abstract class ChimeraAbility : MonoBehaviour
 
         ChildExecute();
 
-        currentCooldown = abilData.cooldown;
+        SetCooldown();
+
+        arm.SetIsAnimating(true);
+    }
+
+    // Getters and Setters
+    public float GetCurrentCooldown()
+    {
+        return currentCooldown;
+    }
+
+    public void SetCurrentCooldown(float newCurrentCooldown)
+    {
+        currentCooldown = newCurrentCooldown;
     }
 
     // Child Functions
-
     protected abstract void ChildExecute();
 
     protected virtual void ChildStart()

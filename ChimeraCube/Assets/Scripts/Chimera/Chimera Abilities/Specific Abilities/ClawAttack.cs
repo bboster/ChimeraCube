@@ -20,5 +20,12 @@ public class ClawAttack : ChimeraAbility
         }
 
         armAnim.Play("FullSwipe");
+        StartCoroutine(DelayedClearAnimating());
+    }
+
+    private IEnumerator DelayedClearAnimating()
+    {
+        yield return new WaitForSeconds(1 / armAnim.speed);
+        arm.SetIsAnimating(false);
     }
 }

@@ -37,7 +37,7 @@ Transform:
   - {fileID: 6605064253218947447}
   - {fileID: 1304104740802965260}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7541386232916450559
 MonoBehaviour:
@@ -91,6 +91,8 @@ MonoBehaviour:
   armRenderer: {fileID: 3734520369058290117}
   pauseGrowth: 0
   growthSpeedModifier: 1
+  attackStartDelay: 1
+  specialStartDelay: 1
 --- !u!114 &1325770189688358977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2321175365472002675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -346,7 +348,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4460259221133676089
 GameObject:

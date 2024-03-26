@@ -38,6 +38,7 @@ public class ClawSpecial : ChimeraAbility
 
     protected override void ChildExecute()
     {
+        Debug.Log("Special Execution");
         arm.SetPauseGrowth(true);
         arm.SetArmTransformActive(false);
         arm.SetHandTransformActive(false);
@@ -60,6 +61,8 @@ public class ClawSpecial : ChimeraAbility
         arm.SetPauseGrowth(false);
         arm.SetArmTransformActive(true);
         arm.SetHandTransformActive(true);
+
+        arm.SetIsAnimating(false);
     }
 
     private void OnArmFullyStretched()

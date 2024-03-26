@@ -39,11 +39,20 @@ public class Arm : MonoBehaviour
     [SerializeField]
     float growthSpeedModifier = 1;
 
+    [Header("Abilities")]
+    [SerializeField]
+    float attackStartDelay = 1;
+
+    [SerializeField]
+    float specialStartDelay = 1;
+
     // Public Assignments
     public Chimera Chimera { get; private set; }
 
     // Private Assignments
     Health health;
+
+    bool isAnimating = false;
 
     // Stamina Management
     float currentStamina = 0;
@@ -59,6 +68,12 @@ public class Arm : MonoBehaviour
     {
         health = GetComponent<Health>();
         Chimera = GetComponentInParent<Chimera>();
+
+        if(attackAbil != null)
+            attackAbil.SetCurrentCooldown(attackAbil.GetCurrentCooldown() + attackStartDelay);
+
+        if (specialAbil != null)
+            specialAbil.SetCurrentCooldown(attackAbil.GetCurrentCooldown() + specialStartDelay);
     }
 
     // Stamina and Ability Tracking
@@ -81,6 +96,8 @@ public class Arm : MonoBehaviour
 
     private void Tick(float deltaTime)
     {
+        AbilityTick();
+
         StaminaTick(deltaTime);
 
         Stretch();
@@ -104,6 +121,18 @@ public class Arm : MonoBehaviour
         }
         else if (!IsFullyStretched())
             currentStamina += deltaTime * armData.growthRate * growthSpeedModifier;
+    }
+
+    private void AbilityTick()
+    {
+        if (isAnimating)
+            return;
+
+        if(attackAbil != null && attackAbil.IsUsable())
+            attackAbil.Execute();
+
+        else if (specialAbil != null && specialAbil.IsUsable())
+            specialAbil.Execute();
     }
 
     public bool IsFullyStretched()
@@ -211,5 +240,15 @@ public class Arm : MonoBehaviour
     public void SetHandTransformActive(bool active)
     {
         handTransform.gameObject.SetActive(active);
+    }
+
+    public void SetIsAnimating(bool isAnim)
+    {
+        isAnimating = isAnim;
+    }
+
+    public bool IsAnimating()
+    {
+        return isAnimating;
     }
 }
