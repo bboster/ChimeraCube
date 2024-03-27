@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private GameObject crossHair;
     [SerializeField] private GameObject helper;
     [SerializeField] private float shootSpeed;
+    [SerializeField] private float dashSpeed = 1000;
+    [SerializeField] private float deathY = 0;
 
     // the ray to get the mouse position
     private Ray shootRay;
@@ -35,9 +37,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float enemyDamage = 10f;
 
     public PlayerHealth PH;
-
-    public AudioClip CrossbowSFX, DashSFX;
-    private AudioSource source;
 
     // Gets the movement input from the InputActions action map.
     public void OnMove(InputAction.CallbackContext context)
@@ -64,9 +63,6 @@ public class PlayerController : MonoBehaviour
 
         // Get the rigidbody component
         rb = GetComponent<Rigidbody>();
-
-        // Get the audiosource component
-        source = GetComponent<AudioSource>();
     }
 
     private void Shoot_canceled(InputAction.CallbackContext obj)
@@ -82,11 +78,12 @@ public class PlayerController : MonoBehaviour
     // Instantiate the bullet, get it's rigidbody, and add a force to it in the direction of the helper.
     public void Shooting()
     {
-        source.PlayOneShot(CrossbowSFX);
         GameObject bullets = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         Rigidbody rb = bullets.GetComponent<Rigidbody>();
         Vector3 shootDirection = (helper.transform.position - shootPoint.position).normalized;
+        shootDirection.y = 0;
         rb.AddForce(shootDirection * shootSpeed);
+        rb.transform.rotation = Quaternion.LookRotation(shootDirection);
         //rb.transform.position = Vector3.MoveTowards(shootPoint.position, helper.transform.position, shootSpeed * Time.deltaTime);
         //Vector3 mousePosition = Input.mousePosition;
         //rb.transform.position = helper.transform.position;
@@ -94,12 +91,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        MovePlayer();
+
         // transform the helper to the ray gotten from the mouse position.
         shootRay = camera.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(shootRay, out RaycastHit raycastHit))
         {
             helper.transform.position = raycastHit.point;
         }
+
+        YCheck();
+    }
+
+    private void YCheck()
+    {
+        if (transform.position.y < deathY)
+            PH.Damage(9001);
     }
 
     private void Dash_canceled(InputAction.CallbackContext obj)
@@ -110,14 +117,7 @@ public class PlayerController : MonoBehaviour
     private void Dash_started(InputAction.CallbackContext context)
     {
         Debug.Log("Dash started");
-        source.PlayOneShot(DashSFX);
-        rb.AddForce(transform.forward * 1000);
-    }
-
-    // Currently just moves the player.
-    void Update()
-    {
-        MovePlayer();
+        rb.AddForce(transform.forward * dashSpeed);
     }
 
     public void MovePlayer()
@@ -126,7 +126,8 @@ public class PlayerController : MonoBehaviour
         // Also has the player rotate.
         Vector3 movement = new Vector3(move.x, 0f, move.y);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        rb.velocity = movement * speed * Time.fixedDeltaTime;
+        transform.Translate(movement * speed * Time.fixedDeltaTime, Space.World);
     }
 
     //private void OnTriggerStay(Collider other)
@@ -139,9 +140,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Chimera")
+        if(collision.collider.CompareTag("AreaDestroyer") || collision.collider.CompareTag("Chimera"))
         {
-            PH.Damage(enemyDamage);
+            Arm arm = collision.collider.GetComponentInParent<Arm>();
+            if(arm == null)
+            {
+                Debug.LogError("Arm collision: arm was null!");
+                return;
+            }
+
+            PH.Damage(arm.GetAttackDamage());
+            //Debug.Log("INSIDE PLAYER: DAMAGED BY " + collision.collider.name);
         }
     }
 
@@ -152,4 +161,11 @@ public class PlayerController : MonoBehaviour
         Shoot.started -= Shoot_started; 
         Shoot.canceled -= Shoot_canceled;
     }
+}
+
+public enum PlayerState
+{
+    RUNNING,
+    DASHING,
+    STUNNED
 }
