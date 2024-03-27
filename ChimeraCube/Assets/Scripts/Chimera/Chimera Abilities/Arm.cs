@@ -79,7 +79,13 @@ public class Arm : MonoBehaviour
     // Stamina and Ability Tracking
     void Update()
     {
-        if(attackAbil != null && Input.GetKeyUp(armData.attackTestCode))
+        if(Chimera.DebugToolsEnabled())
+            DebugKeybinds();
+    }
+
+    private void DebugKeybinds()
+    {
+        if (attackAbil != null && Input.GetKeyUp(armData.attackTestCode))
             attackAbil.Execute();
 
         if (specialAbil != null && Input.GetKeyUp(armData.specialTestCode))
