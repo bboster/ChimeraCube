@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashSpeed = 1000;
     [SerializeField] private float deathY = 0;
 
+    public AudioClip CrossbowSFX, DashSFX;
+    private AudioSource source;
+
     // the ray to get the mouse position
     private Ray shootRay;
 
@@ -59,15 +62,18 @@ public class PlayerController : MonoBehaviour
         Dash.canceled += Dash_canceled;
 
         Shoot.started += Shoot_started;
-        Shoot.canceled += Shoot_canceled; 
+        Shoot.canceled += Shoot_canceled;
 
         // Get the rigidbody component
         rb = GetComponent<Rigidbody>();
+
+        // Get the audiosource component
+        source = GetComponent<AudioSource>();
     }
 
     private void Shoot_canceled(InputAction.CallbackContext obj)
     {
-        
+
     }
 
     private void Shoot_started(InputAction.CallbackContext obj)
@@ -78,6 +84,8 @@ public class PlayerController : MonoBehaviour
     // Instantiate the bullet, get it's rigidbody, and add a force to it in the direction of the helper.
     public void Shooting()
     {
+        source.PlayOneShot(CrossbowSFX);
+
         GameObject bullets = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         Rigidbody rb = bullets.GetComponent<Rigidbody>();
         Vector3 shootDirection = (helper.transform.position - shootPoint.position).normalized;
@@ -95,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         // transform the helper to the ray gotten from the mouse position.
         shootRay = camera.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(shootRay, out RaycastHit raycastHit))
+        if (Physics.Raycast(shootRay, out RaycastHit raycastHit))
         {
             helper.transform.position = raycastHit.point;
         }
@@ -117,6 +125,7 @@ public class PlayerController : MonoBehaviour
     private void Dash_started(InputAction.CallbackContext context)
     {
         Debug.Log("Dash started");
+        source.PlayOneShot(DashSFX);
         rb.AddForce(transform.forward * dashSpeed);
     }
 
@@ -140,10 +149,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("AreaDestroyer") || collision.collider.CompareTag("Chimera"))
+        if (collision.collider.CompareTag("AreaDestroyer") || collision.collider.CompareTag("Chimera"))
         {
             Arm arm = collision.collider.GetComponentInParent<Arm>();
-            if(arm == null)
+            if (arm == null)
             {
                 Debug.LogError("Arm collision: arm was null!");
                 return;
@@ -158,7 +167,7 @@ public class PlayerController : MonoBehaviour
     {
         Dash.started -= Dash_started;
         Dash.canceled -= Dash_canceled;
-        Shoot.started -= Shoot_started; 
+        Shoot.started -= Shoot_started;
         Shoot.canceled -= Shoot_canceled;
     }
 }

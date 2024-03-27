@@ -338,9 +338,11 @@ MonoBehaviour:
   bullet: {fileID: 5021562040123768138, guid: ffaf0d02c0df70f40abbc466223c6a34, type: 3}
   shootPoint: {fileID: 7739696169715362793}
   helper: {fileID: 0}
-  shootSpeed: 10000
+  shootSpeed: 20000
   dashSpeed: 150000
-  deathY: 78.7
+  deathY: 108.7
+  CrossbowSFX: {fileID: 8300000, guid: 24fe6d0376cbd1b47ba1b53dd91c5dc7, type: 3}
+  DashSFX: {fileID: 8300000, guid: 677aadb3c10cf864198343cf4284d6dd, type: 3}
   enemyDamage: 1
   PH: {fileID: 2436426568725835505}
 --- !u!54 &2103295060303687539
