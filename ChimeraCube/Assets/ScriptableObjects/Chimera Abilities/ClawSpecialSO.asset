@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dd9646773d7d14eab6a36b01d6ff4d, type: 3}
   m_Name: ClawSpecialSO
   m_EditorClassIdentifier: 
-  cooldown: 30
+  cooldown: 35
   scalingRate: 1
-  cooldownVariance: 10
+  cooldownVariance: 20
   windUpTime: 1
   icon: {fileID: 0}

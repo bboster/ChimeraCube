@@ -197,6 +197,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2103295060303687539, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103295060303687539, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
@@ -238,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 1505907940}
     - target: {fileID: 5871765066063532637, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
       propertyPath: deathY
-      value: 89
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 5871765066063532637, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
       propertyPath: helper
@@ -278,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7449359588183231835, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 129.2
+      value: 125.9
       objectReference: {fileID: 0}
     - target: {fileID: 7449359588183231835, guid: 08551f69f4e4be64da5b66c4ab3a7055, type: 3}
       propertyPath: m_LocalPosition.z

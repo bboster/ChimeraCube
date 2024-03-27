@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dd9646773d7d14eab6a36b01d6ff4d, type: 3}
   m_Name: ClawAttackSO
   m_EditorClassIdentifier: 
-  cooldown: 7
+  cooldown: 6
   scalingRate: 1
   cooldownVariance: 2
   windUpTime: 0
