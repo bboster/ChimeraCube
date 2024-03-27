@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float iFrameDuration;
 
     [SerializeField] private GameObject youDiedCanvas;
+
+    [SerializeField] Image healthBar; 
 
     
 
@@ -52,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         //{
         //    ScoreboardManager.Instance.StopGame();
         //}
+        UpdateUI();
     }
 
     public void Heal(float amt)
@@ -61,11 +65,17 @@ public class PlayerHealth : MonoBehaviour
             temp = maxHealth;
 
         playerHealth = temp;
+        UpdateUI();
     }
 
     IEnumerator IFrames()
     {
         yield return new WaitForSeconds(iFrameDuration);
         isHit = false;
+    }
+
+    private void UpdateUI()
+    {
+        healthBar.fillAmount = playerHealth / maxHealth;
     }
 }
