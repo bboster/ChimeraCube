@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     public PlayerHealth PH;
 
+    public AudioClip CrossbowSFX, DashSFX;
+    private AudioSource source;
+
     // Gets the movement input from the InputActions action map.
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -61,6 +64,9 @@ public class PlayerController : MonoBehaviour
 
         // Get the rigidbody component
         rb = GetComponent<Rigidbody>();
+
+        // Get the audiosource component
+        source = GetComponent<AudioSource>();
     }
 
     private void Shoot_canceled(InputAction.CallbackContext obj)
@@ -76,6 +82,7 @@ public class PlayerController : MonoBehaviour
     // Instantiate the bullet, get it's rigidbody, and add a force to it in the direction of the helper.
     public void Shooting()
     {
+        source.PlayOneShot(CrossbowSFX);
         GameObject bullets = Instantiate(bullet, shootPoint.position, Quaternion.identity);
         Rigidbody rb = bullets.GetComponent<Rigidbody>();
         Vector3 shootDirection = (helper.transform.position - shootPoint.position).normalized;
@@ -103,6 +110,7 @@ public class PlayerController : MonoBehaviour
     private void Dash_started(InputAction.CallbackContext context)
     {
         Debug.Log("Dash started");
+        source.PlayOneShot(DashSFX);
         rb.AddForce(transform.forward * 1000);
     }
 
