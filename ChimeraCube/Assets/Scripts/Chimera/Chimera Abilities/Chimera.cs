@@ -17,14 +17,18 @@ public class Chimera : MonoBehaviour
     [SerializeField]
     bool debugToolsEnabled = false;
 
+    int amtStoppingRotation = 0;
+
     private void Start()
     {
         rotationalScript = GetComponent<RotateObject>();
+
+        SetRotationSpeed(rotationSpeed);
     }
 
     public void SetRotationSpeed(float newSpeed)
     {
-        rotationSpeed = newSpeed;
+        float rotationSpeed = newSpeed * (CanRotate() ? 1 : 0);
         rotationalScript.SetRotationRate(rotationSpeed);
     }
 
@@ -40,11 +44,26 @@ public class Chimera : MonoBehaviour
 
     public void IncrementRotationSpeed()
     {
-        SetRotationSpeed(rotationSpeedIncrement);
+        rotationSpeed += rotationSpeedIncrement;
+        SetRotationSpeed(rotationSpeed);
     }
 
     public bool DebugToolsEnabled()
     {
         return debugToolsEnabled;
+    }
+
+    public void ToggleRotation(bool toggle)
+    {
+        //Debug.Log("Toggled: " + toggle);
+        amtStoppingRotation += toggle ? -1 : 1;
+        if (amtStoppingRotation < 0)
+            amtStoppingRotation = 0;
+        SetRotationSpeed(rotationSpeed);
+    }
+
+    public bool CanRotate()
+    {
+        return amtStoppingRotation <= 0;
     }
 }

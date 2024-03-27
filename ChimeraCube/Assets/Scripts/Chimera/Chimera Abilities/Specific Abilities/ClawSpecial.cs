@@ -23,22 +23,27 @@ public class ClawSpecial : ChimeraAbility
     [SerializeField]
     float armSpreadAngle = 45;
 
+    [SerializeField]
+    float duration = 10;
+
+    [SerializeField]
+    float staminaBonus = 2.5f;
+
     Health subArmHealth1, subArmHealth2;
+
+    Coroutine durationCoroutine;
 
     protected override void ChildStart()
     {
         subArmHealth1 = subArm1.GetComponent<Health>();
-        subArmHealth1.DeathEvent += OnArmDeath;
-
         subArmHealth2 = subArm2.GetComponent<Health>();
-        subArmHealth2.DeathEvent += OnArmDeath;
-
-        subArm2.FinishedGrowthEvent += OnArmFullyStretched;
     }
 
     protected override void ChildExecute()
     {
-        Debug.Log("Special Execution");
+        SubscribeEvents();
+
+        //Debug.Log("Special Execution");
         arm.SetPauseGrowth(true);
         arm.SetArmTransformActive(false);
         arm.SetHandTransformActive(false);
@@ -50,24 +55,47 @@ public class ClawSpecial : ChimeraAbility
 
         EnableArm(subArm1);
         EnableArm(subArm2);
+
+        durationCoroutine = StartCoroutine(StopAttack());
+    }
+
+    private IEnumerator StopAttack()
+    {
+        yield return new WaitForSeconds(duration);
+        arm.SetStamina(arm.GetStamina() + staminaBonus);
+        OnArmDeath();
     }
 
     private void OnArmDeath()
     {
+        //Debug.Log("Arm Death");
         DisableArm(subArm1, subArmHealth1);
         DisableArm(subArm2, subArmHealth2);
-
-        arm.Chimera.SetRotationSpeed(1);
+        
         arm.SetPauseGrowth(false);
         arm.SetArmTransformActive(true);
         arm.SetHandTransformActive(true);
 
         arm.SetIsAnimating(false);
+
+        arm.Chimera.ToggleRotation(true);
+
+        if(durationCoroutine != null)
+        {
+            StopCoroutine(durationCoroutine);
+        }
+
+        durationCoroutine = null;
+
+        UnsubscribeEvents();
     }
 
     private void OnArmFullyStretched()
     {
-        arm.Chimera.SetRotationSpeed(0);
+        //Debug.Log("Stretcheddd");
+        arm.Chimera.ToggleRotation(false);
+
+        subArm2.FinishedGrowthEvent -= OnArmFullyStretched;
     }
 
     private void EnableArm(Arm arm)
@@ -86,5 +114,19 @@ public class ClawSpecial : ChimeraAbility
         health.SetHealth(health.GetMaxHealth());
 
         arm.SetPauseGrowth(true);
+    }
+
+    private void SubscribeEvents()
+    {
+        subArmHealth1.DeathEvent += OnArmDeath;
+        subArmHealth2.DeathEvent += OnArmDeath;
+        subArm2.FinishedGrowthEvent += OnArmFullyStretched;
+    }
+
+    private void UnsubscribeEvents()
+    {
+        subArmHealth1.DeathEvent -= OnArmDeath;
+        subArmHealth2.DeathEvent -= OnArmDeath;
+        subArm2.FinishedGrowthEvent -= OnArmFullyStretched;
     }
 }

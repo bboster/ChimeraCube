@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d43c2177c8f4f34584e3ed0a563c11c, type: 3}
   m_Name: SubArmSO
   m_EditorClassIdentifier: 
-  maxStamina: 20
+  maxStamina: 10
   maxStretchLength: 3
   growthRate: 10
   growthDecayRate: 0
+  decayRateMultiplier: 2
   doDecayOnHit: 0
   doDestroyEnvironment: 0
-  abilityTestKeycode: 27
+  attackTestCode: 32
+  specialTestCode: 59
   damageTestKeycode: 120

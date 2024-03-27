@@ -140,8 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationalScript: {fileID: 8037649189100125614}
-  rotationSpeed: 1
-  rotationSpeedIncrement: 1
+  rotationSpeed: 0.4
+  rotationSpeedIncrement: 0.4
+  debugToolsEnabled: 0
 --- !u!1001 &3276360636214161576
 PrefabInstance:
   m_ObjectHideFlags: 0

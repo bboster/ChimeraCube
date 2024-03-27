@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         if(playerHealth < 0f)
         {
             playerHealth = 0f;
+            gameObject.SetActive(false);
             youDiedCanvas.SetActive(true);
         }
         else if(playerHealth > maxHealth)
@@ -55,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
         //{
         //    ScoreboardManager.Instance.StopGame();
         //}
+        //Debug.Log("Hit!");
         UpdateUI();
     }
 

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7934147679019934268}
   - component: {fileID: 1325770189688358977}
   - component: {fileID: 6514682783012494891}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClawArm
-  m_TagString: Untagged
+  m_TagString: AreaDestroyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   fillImage1: {fileID: 0}
   fillImage2: {fileID: 0}
   armSpreadAngle: 45
+  duration: 10
 --- !u!114 &7934147679019934268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +94,8 @@ MonoBehaviour:
   growthSpeedModifier: 1
   attackStartDelay: 1
   specialStartDelay: 1
+  damage: 3
+  attackDamageMult: 4
 --- !u!114 &1325770189688358977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8806cfc81ddc94d993a2151fcdd8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 75
   fillImage: {fileID: 0}
 --- !u!95 &6514682783012494891
 Animator:
@@ -138,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8563339565073455128}
   - component: {fileID: 3734520369058290117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: armPlacehold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1304104740802965260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubArms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,9 +260,9 @@ GameObject:
   - component: {fileID: 5732349883032214880}
   - component: {fileID: 2692339649693597708}
   - component: {fileID: 3902602329346693020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: AreaDestroyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,7 +362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1948523636489530972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HandAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +395,7 @@ GameObject:
   - component: {fileID: 2696054237067511307}
   - component: {fileID: 8795868711958072547}
   - component: {fileID: 4962649686959038934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5218,7 +5221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7532047486849013670}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5255,9 +5258,9 @@ GameObject:
   - component: {fileID: 7491959828525377584}
   - component: {fileID: 8083348624917565625}
   - component: {fileID: 1643182085295684199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: AreaDestroyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5359,7 +5362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6605064253218947447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand
   m_TagString: AreaDestroyer
   m_Icon: {fileID: 0}
@@ -5394,7 +5397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6441242040369313289}
   - component: {fileID: 6075563445672142561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: clawPlacehold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5493,8 +5496,36 @@ PrefabInstance:
       value: SubArm
       objectReference: {fileID: 0}
     - target: {fileID: 470814113108918233, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 470814113108918233, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119147267183306993, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274633124267123948, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589638784451961135, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032937122141558485, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563736113797517801, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288716962210572423, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7541032227671755896, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
       propertyPath: m_RootOrder
@@ -5551,6 +5582,10 @@ PrefabInstance:
     - target: {fileID: 8525303742239758184, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537764749634314859, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5598,8 +5633,36 @@ PrefabInstance:
       value: SubArm1
       objectReference: {fileID: 0}
     - target: {fileID: 470814113108918233, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 470814113108918233, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119147267183306993, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274633124267123948, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589638784451961135, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032937122141558485, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563736113797517801, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288716962210572423, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7541032227671755896, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
       propertyPath: m_RootOrder
@@ -5656,6 +5719,10 @@ PrefabInstance:
     - target: {fileID: 8525303742239758184, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537764749634314859, guid: a46092d1c53bcd346a04ce2672f86617, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

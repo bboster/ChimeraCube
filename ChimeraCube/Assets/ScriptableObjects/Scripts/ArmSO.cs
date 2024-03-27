@@ -15,6 +15,8 @@ public class ArmSO : ScriptableObject
 
     public float growthDecayRate = 0.1f;
 
+    public float decayRateMultiplier = 2;
+
     public bool doDecayOnHit = true;
 
     [Header("Environment")]

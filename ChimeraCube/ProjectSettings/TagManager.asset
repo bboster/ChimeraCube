@@ -13,11 +13,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ArenaDestroyer
+  - Damager
+  - Player
+  - Destructible
+  - Bullet
   - 
   - 
   - 

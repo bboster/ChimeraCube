@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 20
   maxStretchLength: 3
-  growthRate: 2
-  growthDecayRate: 0.5
+  growthRate: 0.75
+  growthDecayRate: 1
+  decayRateMultiplier: 0.5
   doDecayOnHit: 1
-  doDestroyEnvironment: 0
-  abilityTestKeycode: 122
+  doDestroyEnvironment: 1
+  attackTestCode: 32
+  specialTestCode: 59
   damageTestKeycode: 102

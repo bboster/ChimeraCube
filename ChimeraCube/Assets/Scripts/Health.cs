@@ -38,12 +38,17 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - dmg, 0, maxHealth);
 
         DamageTakenEvent?.Invoke();
-        Debug.Log(gameObject + " damaged!");
+        //Debug.Log(gameObject + " damaged!");
 
         UpdateUI();
 
         if (IsDead())
+        {
             DeathEvent?.Invoke();
+
+            gameObject.SetActive(false);
+        }
+            
     }
 
     // UI

@@ -46,6 +46,12 @@ public class Arm : MonoBehaviour
     [SerializeField]
     float specialStartDelay = 1;
 
+    [SerializeField]
+    float damage = 1;
+
+    [SerializeField]
+    float attackDamageMult = 5;
+
     // Public Assignments
     public Chimera Chimera { get; private set; }
 
@@ -119,6 +125,7 @@ public class Arm : MonoBehaviour
             currentPendingDamage -= timeScaledDecay;
             currentStamina -= timeScaledDecay;
 
+            //Debug.Log(name + " is Decaying: " + timeScaledDecay);
             if (currentStamina <= 0)
                 currentPendingDamage = 0;
 
@@ -187,6 +194,13 @@ public class Arm : MonoBehaviour
     public void SetStamina(float newStamina)
     {
         currentStamina = newStamina;
+        if (currentStamina < 0)
+            currentStamina = 0;
+        else if(currentStamina > armData.maxStamina)
+        {
+            currentStamina = armData.maxStamina;
+        }
+
         Stretch();
     }
 
@@ -201,6 +215,7 @@ public class Arm : MonoBehaviour
 
         staminaDecay = currentPendingDamage * armData.growthDecayRate;
 
+        //Debug.Log(name + "'s Stamina Decay Is Set To: " + staminaDecay);
         if (currentStamina < 0)
             currentStamina = 0;
     }
@@ -208,12 +223,18 @@ public class Arm : MonoBehaviour
     // Health and Damaging
     public void Damage(float dmg)
     {
+        if(health == null)
+        {
+            Debug.LogError("Health Script Null!");
+            return;
+        }
+
         health.Damage(dmg);
 
         // Growth Decay
         if (armData.doDecayOnHit)
         {
-            DecayStamina(dmg);
+            DecayStamina(dmg * armData.decayRateMultiplier);
         }
         
         if (health.IsDead())
@@ -225,6 +246,21 @@ public class Arm : MonoBehaviour
         }
 
         //Debug.Log("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+    }
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            Debug.Log(name + " damaged player!");
+            float damage = isAnimating ? this.damage * attackDamageMult : this.damage;
+            collision.collider.GetComponent<PlayerHealth>().Damage(damage);
+        }
+    }*/
+
+    public float GetAttackDamage()
+    {
+        return isAnimating ? this.damage * attackDamageMult : this.damage;
     }
 
     // Arm Segments

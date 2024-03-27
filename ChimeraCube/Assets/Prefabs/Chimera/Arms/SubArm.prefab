@@ -56,6 +56,8 @@ MonoBehaviour:
   armRenderer: {fileID: 6849081426536372301}
   pauseGrowth: 1
   growthSpeedModifier: 1
+  attackStartDelay: 1
+  specialStartDelay: 1
 --- !u!114 &763896173426384051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,9 +84,9 @@ GameObject:
   - component: {fileID: 652380600138669328}
   - component: {fileID: 2065464979453981283}
   - component: {fileID: 5102122925581295363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Chimera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,9 +423,9 @@ GameObject:
   - component: {fileID: 2609519707467122715}
   - component: {fileID: 4554272612682851301}
   - component: {fileID: 7230755716736416592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Chimera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
