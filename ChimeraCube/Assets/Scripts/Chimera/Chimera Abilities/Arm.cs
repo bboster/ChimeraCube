@@ -58,7 +58,7 @@ public class Arm : MonoBehaviour
     // Private Assignments
     Health health;
 
-    bool isAnimating = false;
+    public bool isAnimating = false;
 
     // Stamina Management
     float currentStamina = 0;
@@ -191,6 +191,11 @@ public class Arm : MonoBehaviour
         return growthSpeedModifier;
     }
 
+    public float GetGrowthDecayRate()
+    {
+        return armData.growthDecayRate;
+    }
+
     public void SetStamina(float newStamina)
     {
         currentStamina = newStamina;
@@ -286,6 +291,7 @@ public class Arm : MonoBehaviour
 
     public void SetIsAnimating(bool isAnim)
     {
+        Debug.Log(name + " IS ANIMATING: " + isAnim);
         isAnimating = isAnim;
     }
 

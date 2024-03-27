@@ -35,11 +35,15 @@ public class BulletBehavior : MonoBehaviour
         if (other.CompareTag("AreaDestroyer"))
         {
             Damage(other);
+            return;
         }
         else if (other.CompareTag("Chimera"))
         {
             Damage(other);
+            return;
         }
+
+        Destroy(gameObject);
     }
 
     private void Damage(Collider other)

@@ -67,10 +67,19 @@ MonoBehaviour:
   abilData: {fileID: 11400000, guid: 8450587f4b9b8bb488f440a8c8c1dec9, type: 2}
   subArm1: {fileID: 2581417671899558383}
   subArm2: {fileID: 4153216187231814819}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  environmentLayer:
+    serializedVersion: 2
+    m_Bits: 512
   fillImage1: {fileID: 0}
   fillImage2: {fileID: 0}
   armSpreadAngle: 45
+  internalCooldown: 3.5
+  internalCooldownVariance: 3
   duration: 10
+  staminaBonus: 2.5
 --- !u!114 &7934147679019934268
 MonoBehaviour:
   m_ObjectHideFlags: 0

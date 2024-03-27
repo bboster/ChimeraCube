@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1110867855924032215
 Transform:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2834481154243764113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.018, y: 1.01, z: -0.016}
+  m_LocalPosition: {x: -0.018, y: 0.365, z: 0.66}
   m_LocalScale: {x: 0.3, y: 0.14463408, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 5871765066063532637}
   - component: {fileID: 2103295060303687539}
   - component: {fileID: 2436426568725835505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 7475522114528768033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5371, z: 0}
-  m_LocalScale: {x: 29.85, y: 61.914867, z: 29.85}
+  m_LocalScale: {x: 19.35, y: 40.135773, z: 19.35}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7739696169715362793}
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a5873e5cbc6c041812133aee820675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 120
   PlayerInputInstance: {fileID: 6615280949839418630}
   Dash:
     m_Name: Dash
@@ -333,13 +333,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  rb: {fileID: 0}
+  rb: {fileID: 2103295060303687539}
   camera: {fileID: 0}
   bullet: {fileID: 5021562040123768138, guid: ffaf0d02c0df70f40abbc466223c6a34, type: 3}
   shootPoint: {fileID: 7739696169715362793}
   helper: {fileID: 0}
-  shootSpeed: 1000
-  enemyDamage: 10
+  shootSpeed: 10000
+  dashSpeed: 150000
+  deathY: 78.7
+  enemyDamage: 1
   PH: {fileID: 2436426568725835505}
 --- !u!54 &2103295060303687539
 Rigidbody:
@@ -351,7 +353,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.000001
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -365,9 +367,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &2436426568725835505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,9 +383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  playerHealth: 0
+  playerHealth: 100
   hitBox: {fileID: 4788150609578554762}
   isHit: 0
-  iFrameDuration: 0
+  iFrameDuration: 0.5
   youDiedCanvas: {fileID: 0}
   healthBar: {fileID: 0}

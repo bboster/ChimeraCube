@@ -16,6 +16,7 @@ public class ClawAttack : ChimeraAbility
         if (armAnim == null)
         {
             Debug.LogError("ArmAnim is null!");
+            arm.SetIsAnimating(false);
             return;
         }
 
@@ -25,7 +26,9 @@ public class ClawAttack : ChimeraAbility
 
     private IEnumerator DelayedClearAnimating()
     {
+        //Debug.Log("Anim will clear in: " + 1 / armAnim.speed);
         yield return new WaitForSeconds(1 / armAnim.speed);
+        //Debug.Log("CLEARED!");
         arm.SetIsAnimating(false);
     }
 }

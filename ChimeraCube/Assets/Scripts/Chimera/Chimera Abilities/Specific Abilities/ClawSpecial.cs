@@ -12,6 +12,12 @@ public class ClawSpecial : ChimeraAbility
     [SerializeField]
     Arm subArm2;
 
+    [SerializeField]
+    LayerMask playerLayer;
+
+    [SerializeField]
+    LayerMask environmentLayer;
+
     [Header("UI Assignments")]
     [SerializeField]
     Image fillImage1;
@@ -24,6 +30,15 @@ public class ClawSpecial : ChimeraAbility
     float armSpreadAngle = 45;
 
     [SerializeField]
+    float internalCooldown = 5;
+
+    [SerializeField]
+    float internalCooldownVariance = 3;
+
+    [SerializeField]
+    float waitBeforeSecondPlayerCheck = 0.5f;
+
+    [SerializeField]
     float duration = 10;
 
     [SerializeField]
@@ -33,6 +48,8 @@ public class ClawSpecial : ChimeraAbility
 
     Coroutine durationCoroutine;
 
+    Collider[] inRangeColliders = new Collider[1000];
+
     protected override void ChildStart()
     {
         subArmHealth1 = subArm1.GetComponent<Health>();
@@ -41,6 +58,26 @@ public class ClawSpecial : ChimeraAbility
 
     protected override void ChildExecute()
     {
+        //Debug.Log("Attempting Special!");
+        bool playerCheck = PlayerCheck();
+        bool environmentCheck = EnvironmentCheck();
+
+        //Debug.Log("Player Check: " + playerCheck);
+
+        subArm1.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, armSpreadAngle / 2, 0));
+        subArm2.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles - new Vector3(0, armSpreadAngle / 2, 0));
+
+        //Debug.Log("Environment Check:" + environmentCheck);
+        if (!playerCheck || !environmentCheck)
+        {
+            SetCurrentCooldown(internalCooldown + Random.Range(-internalCooldownVariance, internalCooldownVariance));
+            //Debug.Log("Checks Went Wrong! Triggering ICD!");
+            DelayedSetAnimating(false, 0.1f);
+            //Debug.Log("My arm is: " + arm.name);
+
+            return;
+        }
+
         SubscribeEvents();
 
         //Debug.Log("Special Execution");
@@ -50,20 +87,59 @@ public class ClawSpecial : ChimeraAbility
 
         subArm1.SetStamina(arm.GetStamina());
 
-        subArm2.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, armSpreadAngle, 0));
         subArm2.SetGrowthSpeedModifier(2);
 
         EnableArm(subArm1);
         EnableArm(subArm2);
 
-        durationCoroutine = StartCoroutine(StopAttack());
+        durationCoroutine = StartCoroutine(DurationElapse());
+    }
+
+    private IEnumerator DurationElapse()
+    {
+        yield return new WaitForSeconds(duration);
+        StartCoroutine(StopAttack());
     }
 
     private IEnumerator StopAttack()
     {
-        yield return new WaitForSeconds(duration);
+        subArm1.DecayStamina(subArm1.GetStamina());
+        subArm2.DecayStamina(subArm2.GetStamina());
+        yield return new WaitForSeconds(subArm1.GetStamina() * subArm1.GetGrowthDecayRate());
         arm.SetStamina(arm.GetStamina() + staminaBonus);
         OnArmDeath();
+    }
+
+    private IEnumerator WaitForPlayerCheck()
+    {
+        yield return new WaitForSeconds(waitBeforeSecondPlayerCheck);
+        if (!PlayerCheck())
+            StartCoroutine(StopAttack());
+    }
+
+    bool PlayerCheck()
+    {
+        int inRangeColliderCount = Physics.OverlapSphereNonAlloc(transform.position, 1000, inRangeColliders, playerLayer);
+
+        Vector3 characterToCollider;
+        float dot;
+        for (int i = 0; i < inRangeColliderCount; i++)
+        {
+            characterToCollider = (inRangeColliders[i].transform.position - transform.position).normalized;
+            dot = Vector3.Angle(characterToCollider, transform.TransformDirection(Vector3.forward).normalized);
+            if (dot < armSpreadAngle / 2)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    bool EnvironmentCheck()
+    {
+        return Physics.Raycast(subArm1.transform.position, subArm1.transform.TransformDirection(Vector3.forward) * 1000, environmentLayer) &&
+            Physics.Raycast(subArm2.transform.position, subArm2.transform.TransformDirection(Vector3.forward) * 1000, environmentLayer);
     }
 
     private void OnArmDeath()
@@ -87,6 +163,8 @@ public class ClawSpecial : ChimeraAbility
 
         durationCoroutine = null;
 
+        SetCurrentCooldown(internalCooldown + Random.Range(-internalCooldownVariance, internalCooldownVariance));
+
         UnsubscribeEvents();
     }
 
@@ -94,6 +172,8 @@ public class ClawSpecial : ChimeraAbility
     {
         //Debug.Log("Stretcheddd");
         arm.Chimera.ToggleRotation(false);
+
+        StartCoroutine(WaitForPlayerCheck());
 
         subArm2.FinishedGrowthEvent -= OnArmFullyStretched;
     }
@@ -129,4 +209,11 @@ public class ClawSpecial : ChimeraAbility
         subArmHealth2.DeathEvent -= OnArmDeath;
         subArm2.FinishedGrowthEvent -= OnArmFullyStretched;
     }
+
+    /*private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(subArm1.transform.position, subArm1.transform.TransformDirection(Vector3.forward) * 1000);
+        Gizmos.DrawLine(subArm2.transform.position, subArm2.transform.TransformDirection(Vector3.forward) * 1000);
+    }*/
 }

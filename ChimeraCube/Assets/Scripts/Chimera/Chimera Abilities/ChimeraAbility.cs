@@ -13,16 +13,16 @@ public abstract class ChimeraAbility : MonoBehaviour
 
     protected Arm arm { get; private set; }
 
-    float currentCooldown = 0;
+    float currentCooldown = 1;
 
     private void Awake()
     {
-        SetCooldown();
         arm = GetComponentInParent<Arm>();
     }
 
     private void Start()
     {
+        SetCooldown();
         ChildStart();
     }
 
@@ -58,6 +58,7 @@ public abstract class ChimeraAbility : MonoBehaviour
         if (!IsUsable())
             return;
 
+        Debug.Log("Using " + abilData.name + "!");
         ChildExecute();
 
         SetCooldown();
@@ -87,5 +88,16 @@ public abstract class ChimeraAbility : MonoBehaviour
     protected virtual void ChildTick()
     {
 
+    }
+
+    protected void DelayedSetAnimating(bool toggle, float delay)
+    {
+        StartCoroutine(DelayedSetAnimation(toggle, delay));
+    }
+
+    private IEnumerator DelayedSetAnimation(bool toggle, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        arm.SetIsAnimating(toggle);
     }
 }
